@@ -18,7 +18,6 @@ import Paper from "@material-ui/core/Paper";
 import Tab from "@material-ui/core/Tab";
 import Tabs from "@material-ui/core/Tabs";
 
-// old hosted contracts 0xFB1d03d9Fdf585521b5Aab0541EC9B0Ec5952917 0x899E775ee5B8212d6514bd8E505c008C274f142D, 0xdbfd75875d985d353609470348f5b9ff5bd3615d, 0xCD7e28E92eD055b44512e9bE3b52cFDfcFe49373
 const CONTRACT_ADDRESS = "0x610659c6B7cDcfe24daFE6d90dabD2C1E9B4ed04";
 
 export default function Home() {
@@ -29,7 +28,6 @@ export default function Home() {
   const [value, setValue] = React.useState(0);
 
   const checkIfWalletIsConnected = async () => {
-    // @ts-ignore
     const { ethereum } = window;
 
     if (!ethereum) {
@@ -50,7 +48,6 @@ export default function Home() {
 
   const connectWallet = async () => {
     try {
-      // @ts-ignore
       const { ethereum } = window;
 
       if (!ethereum) {
@@ -59,7 +56,7 @@ export default function Home() {
       }
       let chainId = await ethereum.request({ method: "eth_chainId" });
 
-      // String, hex code of the chainId of the Rinkebey test network
+      // String, hex code of the chainId of the Polygon Mumbai network
       const rinkebyChainId = "0x13881";
       if (chainId !== rinkebyChainId) {
         alert("You are not connected to the Polygon Mumbai Network!");
@@ -79,8 +76,7 @@ export default function Home() {
 
   const getMembers = async () => {
     try {
-      // @ts-ignore
-      const { ethereum } = window;
+        const { ethereum } = window;
 
       if (ethereum) {
         const provider = new ethers.providers.Web3Provider(ethereum);
@@ -122,8 +118,7 @@ export default function Home() {
 
   const getEvents = async () => {
     try {
-      // @ts-ignore
-      const { ethereum } = window;
+        const { ethereum } = window;
 
       if (ethereum) {
         const provider = new ethers.providers.Web3Provider(ethereum);
@@ -169,8 +164,7 @@ export default function Home() {
 
   const joinEvents = async (eventID) => {
     try {
-      // @ts-ignore
-      const { ethereum } = window;
+        const { ethereum } = window;
 
       if (ethereum) {
         const provider = new ethers.providers.Web3Provider(ethereum);
@@ -200,8 +194,7 @@ export default function Home() {
 
   const signupMembers = async (_discordUsername, _role, _profileURL) => {
     try {
-      // @ts-ignore
-      const { ethereum } = window;
+        const { ethereum } = window;
 
       if (ethereum) {
         const provider = new ethers.providers.Web3Provider(ethereum);
@@ -230,8 +223,7 @@ export default function Home() {
 
   const loginMembers = async () => {
     try {
-      // @ts-ignore
-      const { ethereum } = window;
+        const { ethereum } = window;
 
       if (ethereum) {
         const provider = new ethers.providers.Web3Provider(ethereum);
@@ -255,8 +247,7 @@ export default function Home() {
 
   const createEvents = async (values) => {
     try {
-      // @ts-ignore
-      const { ethereum } = window;
+        const { ethereum } = window;
 
       if (ethereum) {
         const provider = new ethers.providers.Web3Provider(ethereum);
