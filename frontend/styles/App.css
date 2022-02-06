@@ -1,0 +1,93 @@
+body{
+    font-family: 'Circular-Loom' !important;
+}
+
+header{
+    background: #05A6FA !important;
+}
+
+.container{
+    text-align: center;
+    margin: 20px 0px;
+}
+
+.gradient-text{
+    background: linear-gradient(135deg, #FFCC33 0%, #E233FF 100%);
+    color: #F18099;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    width: fit-content;
+    margin: auto;
+    font-size: 2rem;
+}
+
+.sub-text{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #F18099;
+}
+
+.blue-button{
+    text-align: center;
+    background: #05A6FA !important;
+    color: white !important;
+    border: none;
+    border-radius: 50px !important;
+    width: 200px;
+    height: 50px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+a, .MuiStepIcon-active, .MuiStepIcon-completed{
+    color: #05A6FA !important;
+}
+
+.member-list-item{
+    display: grid;
+    grid-template-columns: 10% 20% 30% 20% 20%;
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #05A6FA !important;
+    margin-top: 10px;
+}
+
+.member-list-item img{
+    width: 70px;
+}
+
+.event-list-item{
+    display: grid;
+    grid-template-columns: 10% 10% 15% 20% 10% 35%;
+    text-align: center;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #05A6FA !important;
+    margin-top: 10px;
+}
+
+.event-list-item img{
+    width: 70px;
+}
+
+.role{
+    background-color: #05A6FA;
+    color: white;
+    border-radius: 50px;
+    display: inline;
+    padding: 5px 10px;
+}
+
+.bold{
+    font-weight: bold !important;
+}
+
+.MuiTab-textColorPrimary.Mui-selected{
+    color: #05A6FA !important;
+}
+
+.MuiTabs-indicator{
+    background-color: #05A6FA !important;
+}
