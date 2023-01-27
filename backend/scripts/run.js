@@ -9,6 +9,7 @@ const main = async () => {
   await tx.wait();
   tx = await daoContract.joinEvent(1);
   await tx.wait();
+  tx = await daoContract.getEvents();
 };
 
 const runMain = async () => {

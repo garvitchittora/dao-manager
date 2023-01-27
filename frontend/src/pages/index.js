@@ -18,7 +18,7 @@ import Paper from "@material-ui/core/Paper";
 import Tab from "@material-ui/core/Tab";
 import Tabs from "@material-ui/core/Tabs";
 
-const CONTRACT_ADDRESS = "0x610659c6B7cDcfe24daFE6d90dabD2C1E9B4ed04";
+const CONTRACT_ADDRESS = "0xED50CA709D2FFa395edA5A47d55929A9329a81e6";
 
 export default function Home() {
   const [currentAccount, setCurrentAccount] = useState("");
@@ -86,28 +86,24 @@ export default function Home() {
           DAOJson.abi,
           signer
         );
+        console.log(connectedContract);
 
-        let nftTxn = await connectedContract.getMembers();
-        await nftTxn.wait();
-
-        connectedContract.on("MembersList", (memberList) => {
-          const finalMemberList = memberList
-            .map((member) => {
-              return {
-                id: member[0].toNumber(),
-                points: member[1].toNumber(),
-                timestamp: member[2]?.toNumber(),
-                discordUsername: member[3],
-                role: member[4],
-                pastActivities: member[5],
-                profileURL: member[6],
-                memberAddress: member[7],
-              };
-            })
-            .sort((a, b) => b.points - a.points);
-          setMemberList(finalMemberList);
-          console.log(finalMemberList);
-        });
+        let memberList = await connectedContract.getMembers();
+        const finalMemberList = memberList
+          .map((member) => {
+            return {
+              id: member[0].toNumber(),
+              points: member[1].toNumber(),
+              timestamp: member[2]?.toNumber(),
+              discordUsername: member[3],
+              role: member[4],
+              pastActivities: member[5],
+              profileURL: member[6],
+              memberAddress: member[7],
+            };
+          })
+          .sort((a, b) => b.points - a.points);
+        setMemberList(finalMemberList);
       } else {
         console.log("Ethereum object doesn't exist!");
       }
@@ -129,31 +125,28 @@ export default function Home() {
           signer
         );
 
-        let nftTxn = await connectedContract.getEvents();
-        await nftTxn.wait();
-        connectedContract.on("EventsList", (eventList) => {
-          const eventMemberList = eventList.map((event) => {
-            console.log(currentAccount, event[6]);
-            let isAttending = false;
-            event[6].forEach((attendee) => {
-              if (attendee == currentAccount) {
-                isAttending = true;
-              }
-            });
-
-            return {
-              id: event[0].toNumber(),
-              timestamp: event[1].toNumber(),
-              name: event[2],
-              description: event[3],
-              coverURL: event[4],
-              createdBy: event[5],
-              attendees: event[6],
-              isAttending: isAttending,
-            };
+        let eventList = await connectedContract.getEvents();
+        const eventMemberList = eventList.map((event) => {
+          console.log(currentAccount, event[6]);
+          let isAttending = false;
+          event[6].forEach((attendee) => {
+            if (attendee == currentAccount) {
+              isAttending = true;
+            }
           });
-          setEventList(eventMemberList);
+
+          return {
+            id: event[0].toNumber(),
+            timestamp: event[1].toNumber(),
+            name: event[2],
+            description: event[3],
+            coverURL: event[4],
+            createdBy: event[5],
+            attendees: event[6],
+            isAttending: isAttending,
+          };
         });
+        setEventList(eventMemberList);
       } else {
         console.log("Ethereum object doesn't exist!");
       }

@@ -42,15 +42,15 @@ contract DAO {
         _memberIds.increment();
     }
 
-    function getMembers() public {
-        emit MembersList(members);
+    function getMembers() public view returns (Member[] memory){
+        return members;
     }
 
-    function getEvents() public {
-        emit EventsList(events);
+    function getEvents() public view returns (Event[] memory){
+        return events;
     }
 
-    function login() public {
+    function login() public view{
         require(_memberIdsByAddress[msg.sender] > 0, "Not the member of DAO");
     }
 
